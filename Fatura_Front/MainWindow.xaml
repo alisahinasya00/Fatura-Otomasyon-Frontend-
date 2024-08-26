@@ -1,0 +1,84 @@
+﻿<Window x:Class="Fatura_Front.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Fatura_Front"
+        mc:Ignorable="d"
+        Title="Parts-Soft Fatura Otomasyon" Height="450" Width="800"
+        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+        Icon="img\logo-fatura-kesme.ico"
+        TextElement.Foreground="{DynamicResource MaterialDesignBody}"
+        TextElement.FontWeight="Regular"
+        TextElement.FontSize="13"
+        TextOptions.TextFormattingMode="Ideal"
+        TextOptions.TextRenderingMode="Auto"
+        Background="{DynamicResource MaterialDesignPaper}"
+        xmlns:tb="http://www.hardcodet.net/taskbar"
+        FontFamily="{DynamicResource MaterialDesignFont}">
+
+    <Grid x:Name="MainGrid">
+
+        <tb:TaskbarIcon x:Name="MyNotifyIcon"
+                IconSource="img/logo-fatura-kesme.ico"
+                ToolTipText="My WPF Application"
+                TrayLeftMouseDown="MyNotifyIcon_TrayLeftMouseDown">
+            <tb:TaskbarIcon.ContextMenu>
+                <ContextMenu>
+                    <MenuItem Header="Aç" Click="Menu_Open_Click"/>
+                    <MenuItem Header="Çıkış" Click="Menu_Exit_Click"/>
+                </ContextMenu>
+            </tb:TaskbarIcon.ContextMenu>
+        </tb:TaskbarIcon>
+
+        <TabControl x:Name="MainTabControl"
+              Style="{StaticResource MaterialDesignNavigatilRailTabControl}"
+              materialDesign:ColorZoneAssist.Mode="PrimaryMid"
+              TabStripPlacement="Left"
+              materialDesign:NavigationRailAssist.SelectionCornerRadius="20 0 0 20"
+              materialDesign:NavigationRailAssist.ShowSelectionBackground="True">
+
+            <TabItem>
+                <TabItem.Header>
+                    <StackPanel Margin="5 0 5 0">
+                        <materialDesign:PackIcon Kind="Account" Width="24" Height="24" HorizontalAlignment="Center" />
+                        <TextBlock HorizontalAlignment="Center" Text="Bilgilerim" Margin="0" />
+                    </StackPanel>
+                </TabItem.Header>
+                <local:Bilgilerim/>
+            </TabItem>
+
+            <TabItem>
+                <TabItem.Header>
+                    <StackPanel Height="auto" Width="auto">
+                        <materialDesign:PackIcon Kind="invoice" Width="24" Height="24" HorizontalAlignment="Center" />
+                        <TextBlock Text="Faturalar" HorizontalAlignment="Center" />
+                    </StackPanel>
+                </TabItem.Header>
+                <local:Faturalar/>
+            </TabItem>
+
+            <TabItem>
+                <TabItem.Header>
+                    <StackPanel Height="auto" Width="auto">
+                        <materialDesign:PackIcon Kind="InvoiceCheckOutline" Width="24" Height="24" HorizontalAlignment="Center" />
+                        <TextBlock Text="Geçmiş" HorizontalAlignment="Center" />
+                        <TextBlock Text="Faturalar" HorizontalAlignment="Center" />
+                    </StackPanel>
+                </TabItem.Header>
+                <local:GecmisFaturalar/>
+            </TabItem>
+
+            <TabItem>
+                <TabItem.Header>
+                    <StackPanel Height="auto" Width="auto">
+                        <materialDesign:PackIcon Kind="Printer" Width="24" Height="24" HorizontalAlignment="Center" />
+                        <TextBlock Text="Yazıcılar" HorizontalAlignment="Center" />
+                    </StackPanel>
+                </TabItem.Header>
+                <local:Yazıcılar/>
+            </TabItem>
+
+        </TabControl>
+    </Grid>
+</Window>
